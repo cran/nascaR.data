@@ -1,139 +1,164 @@
+# nascaR.data <a href="https://kylegrealis.github.io/nascaR.data/"><img src="man/figures/logo.svg" align="right" height="139" alt="nascaR.data website" /></a>
 
-# nascaR.data
 
-![NASCAR Logo](inst/images/NASCAR-Bar-mark.jpg)
+[![R-CMD-check](https://img.shields.io/badge/R--CMD--check-passing-brightgreen)](https://github.com/kyleGrealis/nascaR.data/actions)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![CRAN status](https://www.r-pkg.org/badges/version/nascaR.data)](https://CRAN.R-project.org/package=nascaR.data)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/nascaR.data)](https://cran.r-project.org/package=nascaR.data)
+[![NASCAR Data Update](https://github.com/kyleGrealis/nascaR.data/actions/workflows/weekly-nascar-update.yml/badge.svg)](https://github.com/kyleGrealis/nascaR.data/actions/workflows/weekly-nascar-update.yml)
 
 
 ----
 
-**nascaR.data** is a curated group of datasets across NASCAR's top three series: Cup, Xfinity, and Trucks. There are 21 sets available to explore & use for creating tables or other data visualizations.
+> ⚠️ **Version Notice**: The version on CRAN contains race data through the 2024 season. This GitHub version includes automated weekly updates. The updated data is available every Monday during the race season (February through November) on the `weekly` branch. See below for details on installing and updating.
 
-Install `nascaR.data` with:
+**nascaR.data** provides historical race results from NASCAR's top three series: Cup (1949-present), Xfinity (1982-present), and Trucks (1995-present). Explore driver, team, and manufacturer performance in a race-by-race, season, or career format. This data has been expertly curated and scraped with permission from [DriverAverages.com](https://www.driveraverages.com).
 
-```
+## Installation
+
+Install the stable CRAN version (through 2024 season):
+```r
+install.packages('nascaR.data')
+# or
+remotes::install_cran('nascaR.data')
+# or
 remotes::install_github('kyleGrealis/nascaR.data')
 ```
+Install the weekly updated version:
 
-or use the official CRAN release:
-
+```r
+remotes::install_github('kyleGrealis/nascaR.data@weekly')
 ```
-install.packages('nascaR.data')
-```
 
-----
-
-**Project updates:**
-
-- [x] Craftsman Truck Series data (completed: 5/23/2024)
-- [x] Busch/Xfinity Series data (completed: 6/3/2024)
-- [x] NASCAR Cup Series data (completed: 6/3/2024)
-- [x] data cleaning and variable creation (completed: 6/16/2024)
-- [x] R package tidbits (completed: 6/21/2024)
-- [x] R package submitted to CRAN (completed: 6/25/2024)
-
-----
-
-This package is a collection of NASCAR race, driver, owner and manufacturer data across the three major NASCAR divisions: NASCAR Cup Series, NASCAR Xfinity Series, and NASCAR Craftsman Truck Series. The curated data begins with the 1949 season and extends through the end of the 2023 season. Data was sourced with permission from DriverAverages.com.
-
-----
+---
 
 ## In the Pits
 
-NASCAR is one of the top-tier racing sports in North America and competes against F1 and IndyCar for the top viewership spot. Approximately 3.22 million people watch a race on any given weekend throughout the season. The `nascaR.data` package is the result of wanting to share a passion for the sport and provide an option to the typical go-to packages when learning new data visualization tools. 
+NASCAR is one of the top-tier racing sports in North America and competes against Formula-1 and IndyCar for the top viewership spot. Approximately 3.22 million people watch a race on any given weekend throughout the season. The nascaR.data package is the result of wanting to share a passion for the sport and provide an option to the typical go-to packages when learning new data cleaning & visualization tools.
 
-`nascaR.data` is packed full of NASCAR results dating back to the first Daytona Beach race in 1949! Use this package to discover race trends across the NASCAR Cup Series, Xfinity Series, and Craftsman Truck Series. Answer fun questions like "which driver has accumulated the most wins overall?", "which owner has the best top 10 percentage at Daytona?", or see which manufacturer has dominated which series in a certain season. It's all here, so let's strap in to our race seats, fire up those engines, and let's take some warm-up laps.
+## Data Structure
 
-## Warming up the tires
+The package provides three main datasets:
 
-`nascaR.data` provides access to 21 different datasets (7 per series) and are broken down by overall race results and driver, owner, and manufacturer season & career records. Let's check our gauges and see what's under the hood:
+* `cup_series`: NASCAR Cup Series race results (1949-present)
+* `xfinity_series`: NASCAR Xfinity Series race results (1982-present)
+* `truck_series`: NASCAR Craftsman Truck Series results (1995-present)
 
-```{r, echo=TRUE}
+Each dataset contains detailed race information including:
+
+* Race details (Season, Race number, Track, Name)
+* Results (Finish position, Start position)
+* Performance metrics (Laps completed, Laps led, Points earned)
+* Driver and team information
+
+Data is sourced with permission from DriverAverages.com and is automatically updated every Monday at 5AM EST during the racing season (February through November).
+
+## Usage
+
+Load the package:
+
+```r
 library(nascaR.data)
 ```
 
-Use `?nascaR.data::cup_race_data` to view a list of variable descriptions. This package has been designed to swap `cup` for `xfinity` or `truck` to see the same data structure (variables) for the respective series. Would you rather inspect driver-specific results listed by season or their overall career? No problem... this is an easy pit stop: `cup_driver_career` or `xfinity_owner_season` or `truck_mfg_overall`.
+### Race Data
 
-## Green Flag!
+View the dataset documentation:
 
-**Which drivers are in the Top 5 for wins in the NASCAR Cup Series?**
-
-First, organize the drivers in descending order by win. Then, subset to keep the Top 5 winningest drivers. Lastly, feed the data into a horizontal bar chart (some other tweaks will be applied to enhance the visual output).
-
-```{r, echo=TRUE, eval=FALSE, warning=FALSE}
-cup_driver_career |>
-  arrange(desc(career_wins)) |>
-  slice_head(n = 5) |>
-  ggplot(aes(driver, career_wins)) +
-  geom_bar(stat = 'identity') +
-  coord_flip()
+```r
+?cup_series
+?xfinity_series
+?truck_series
 ```
 
-![NASCAR Top 5 wins](inst/images/nascar-top-5.png)
+### Driver, Team, & Manufacturer Data
 
-Wow! This doesn't even look like a close race. Richard Petty clearly leads the field with 200 wins. However, let's take a drive a little deeper into the turn and account for the number of races each driver competed in. What if we compare these same five drivers by win percentage?
+Use the suite of `get_*_info()` functions to examine specific performace results on a race-by-race, season, or career level.
 
-```{r, echo=TRUE, eval=FALSE, warning=FALSE}
-cup_driver_career |>
-  arrange(desc(career_wins)) |>
-  slice_head(n = 5) |>
-  ggplot(aes(driver, career_win_pct)) +
-  geom_bar(stat = 'identity') +
-  coord_flip()
+```r
+# Career results across all series
+get_driver_info("Kyle Busch")
 ```
 
-![NASCAR Top 5 percent wins](inst/images/nascar-top-5-pct.png)
-
-## The Garage Area
-
-**Which manufacturer has the best win percentage by season?**
-
-Let's go behind the pits and see what the manufacturers are up to in the Truck Series.
-
-```{r, eval=FALSE, warning=FALSE}
-truck_mfg_season |>
-  ggplot(aes(season, mfg_season_win_pct, group = manufacturer, color = manufacturer)) +
-  geom_line() +
-  geom_point()
+```
+Kyle Busch
+# A tibble: 3 × 8
+  Series  Seasons `Career Races`  Wins `Best Finish` `Avg Finish` `Laps Raced` `Laps Led`
+  <chr>     <int>          <int> <dbl>         <int>        <dbl>        <int>      <int>
+1 Cup          21            696    61             1         14         188962      18918
+2 Truck        22            175    66             1          6.5        25233       8050
+3 Xfinity      21            367   102             1          9          65550      20129
 ```
 
-![NASCAR Truck manufacturer win percent by season](inst/images/truck-mfg.png)
-
-No clear trend emerges, though it appears that there may be a 5-year clustering of winning percentage. For example, the Dodges experienced success in the early 2000s, but started to fall off before exiting the series. And while Ford has seemingly had gradual improvement, you can clearly see the success of the Toyota camp since joining the Truck series in 2004.
-
-## Post-race
-
-**Collect your race winnings**
-
-How has the average money for winning a race changed over time?
-
-```{r, eval=FALSE,, warning=FALSE}
-cup <- cup_race_data |>
-  mutate(series = 'Cup') |>
-  filter(finish == 1) |>
-  select(season, race, finish, money, series)
-
-xfinity <- xfinity_race_data |>
-  mutate(series = 'Xfinity') |>
-  filter(finish == 1) |>
-  select(season, race, driver, money, series)
-
-truck <- truck_race_data |>
-  mutate(series = 'Truck') |>
-  filter(finish == 1) |>
-  select(season, race, driver, money, series)
-
-bind_rows(cup, xfinity, truck) |>
-  group_by(series, season) |>
-  summarize(mean_money = mean(money, na.rm = TRUE)) |>
-  ggplot(aes(season, mean_money, group = series, color = series)) +
-  geom_point() +
-  geom_line()
+```r
+# Season results across all series
+get_driver_info("Kyle Busch", type = "season")
 ```
 
-![NASCAR Win money by season](inst/images/nascar-money.png)
+```
+Kyle Busch
+# A tibble: 64 × 8
+# Groups:   Series [3]
+   Series Season Races  Wins `Best Finish` `Avg Finish` `Laps Raced` `Laps Led`
+   <chr>   <int> <int> <dbl>         <int>        <dbl>        <int>      <int>
+ 1 Cup      2004     6     0            24         35.2         1098          0
+ 2 Cup      2005    34     2             1         20.4         9590        365
+ 3 Cup      2006    34     1             1         14.9         9807        543
+ 4 Cup      2007    35     1             1         13.9        10014        636
+ 5 Cup      2008    35     8             1         12.3        10046       1673
+ 6 Cup      2009    35     4             1         15.6        10005       1156
+ 7 Cup      2010    34     3             1         13.5        10365       1270
+ 8 Cup      2011    34     4             1         12.7         9563       1439
+ 9 Cup      2012    35     1             1         13.5         9577       1245
+10 Cup      2013    34     4             1         12.9         9803       1227
+# ℹ 54 more rows
+# ℹ Use `print(n = ...)` to see more rows
+```
 
-Race winnings in the Cup series experienced exponential growth beginning in the 1980s while Xfinity and Truck Series winnings have remained relatively the same since 2000.
+Or search by race team or manufacturer:
+
+```r
+get_team_info("Petty Enterprises")
+get_manufacturer_info("Toyota")
+```
 
 ## The Backstretch
+This package provides rich historical data for:
 
-I hope this gives you a little taste of what is included in this package. There's plenty of opportunity to further clean and reshape the data for data visualizations or model prepping. I'll be adding more data throughout the season.
+* Analyzing race trends across series
+* Comparing driver performances
+* Creating visualizations of NASCAR statistics
+
+### Functions Reference
+
+| Function | Description |
+|----------|-------------|
+| `get_driver_info()` | Obtain race, season, or career performance results |
+| `get_team_info()` | Team-specific race, season, or career results (i.e., Petty Enterprises) |
+| `get_manufacturer_info()` | Ford, Chevy, Toyota, Dodge, even Studebaker |
+
+### Dataset Reference
+
+| Dataset |  |
+|---------|--|
+| `cup_series` | Across the many names from Winston Cup to Sprint Cup and more |
+| `xfinity_series` | Using the current series name (as of Jan. 2025) |
+| `truck_series` | Same as the others. Though names have changed, the passion remains |
+
+
+## Contributing
+
+We're open to suggestions! If you have ideas for new features, please open an issue on our GitHub repository.
+
+----
+
+## License
+
+[GNU General Public License (Version 3)](https://choosealicense.com/licenses/gpl-3.0/)
+
+---
+
+Developed by [Kyle Grealis](https://github.com/kyleGrealis)
+
+
+
