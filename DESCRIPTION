@@ -1,6 +1,6 @@
 Package: nascaR.data
 Title: NASCAR Race Data
-Version: 2.2.0
+Version: 2.2.1
 Authors@R: 
     c(
         person(
@@ -24,8 +24,10 @@ Authors@R:
             comment = c(ORCID = "0000-0003-1341-4555")
         )
     )
+Maintainer: Kyle Grealis <kylegrealis@icloud.com>
 Description: A collection of NASCAR race, driver, owner and manufacturer data across the three major NASCAR divisions: NASCAR Cup Series, NASCAR Xfinity Series, and NASCAR Craftsman Truck Series. The curated data begins with the 1949 season and extends through the end of the 2024 season. Explore race, season, or career performance for drivers, teams, and manufacturers throughout NASCAR's history. Data was sourced with permission from DriverAverages.com.
 LazyData: true
+LazyDataCompression: bzip2
 License: GPL (>= 3)
 Depends: R (>= 4.1.0)
 Encoding: UTF-8
@@ -33,11 +35,12 @@ RoxygenNote: 7.3.2
 Imports: dplyr, glue, purrr, rlang, rvest, stringdist, stringr
 Suggests: roxygen2, scales
 URL: https://azimuth-project.tech/nascaR.data/
+BugReports: https://github.com/kyleGrealis/nascaR.data/issues
 NeedsCompilation: no
-Packaged: 2025-02-12 01:02:49 UTC; kyle
-Author: Kyle Grealis [aut, cre] (<https://orcid.org/0000-0002-9223-8854>),
+Packaged: 2025-05-15 00:09:19 UTC; kyle
+Author: Kyle Grealis [aut, cre] (ORCID:
+    <https://orcid.org/0000-0002-9223-8854>),
   Nick Triplett [ctb],
-  Gabriel Odom [ctb] (<https://orcid.org/0000-0003-1341-4555>)
-Maintainer: Kyle Grealis <kylegrealis@icloud.com>
+  Gabriel Odom [ctb] (ORCID: <https://orcid.org/0000-0003-1341-4555>)
 Repository: CRAN
-Date/Publication: 2025-02-12 11:50:02 UTC
+Date/Publication: 2025-05-15 04:10:02 UTC
