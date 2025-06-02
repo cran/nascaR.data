@@ -10,25 +10,25 @@
 
 ----
 
-> ⚠️ **Version Notice**: The version on CRAN contains race data through the 2024 season. This GitHub version includes automated weekly updates. The updated data is available every Monday during the race season (February through November) on the `weekly` branch. See below for details on installing and updating.
+> ⚠️ **Version Notice**: The version on CRAN contains race data through the 2025 Nashville race (race number 14). This GitHub version includes automated weekly updates. The updated data is available every Monday during the race season (February through November) on the `main` branch. See below for details on installing and updating.
 
 **nascaR.data** provides historical race results from NASCAR's top three series: Cup (1949-present), Xfinity (1982-present), and Trucks (1995-present). Explore driver, team, and manufacturer performance in a race-by-race, season, or career format. This data has been expertly curated and scraped with permission from [DriverAverages.com](https://www.driveraverages.com).
 
+> ⚠️⚠️ **Deprecating `weekly` branch**: Beginning June 2025, please use the `main` branch for the weekly updates and no longer use the `weekly` branch. The GitHub Action that scrapes the results will push updates to `main`. The `weekly` branch will be removed at the end of the 2025 season. Thank you :)
+
 ## Installation
 
-For the most up-to-date results, install the weekly updated version. This branch updates every Monday:
+For the most up-to-date results, install the from the `main` branch. This branch will update every Monday:
 
 ```r
-remotes::install_github('kyleGrealis/nascaR.data@weekly')
+remotes::install_github('kyleGrealis/nascaR.data')
 ```
 
-Install the stable CRAN version (through 2024 season):
+Install the stable CRAN version (through Nashville race of the 2025 season):
 ```r
 install.packages('nascaR.data')
 # or
 remotes::install_cran('nascaR.data')
-# or
-remotes::install_github('kyleGrealis/nascaR.data')
 ```
 
 > Stable CRAN package updates are planned sporadically throughtout the season.
