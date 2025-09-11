@@ -1,6 +1,6 @@
 Package: nascaR.data
 Title: NASCAR Race Data
-Version: 2.2.2
+Version: 2.2.3
 Authors@R: 
     c(
         person(
@@ -34,13 +34,13 @@ Encoding: UTF-8
 RoxygenNote: 7.3.2
 Imports: dplyr, glue, purrr, rlang, rvest, stringdist, stringr
 Suggests: roxygen2, scales
-URL: https://azimuth-project.tech/nascaR.data/
+URL: https://www.kyleGrealis.com/nascaR.data/
 BugReports: https://github.com/kyleGrealis/nascaR.data/issues
 NeedsCompilation: no
-Packaged: 2025-06-02 21:45:00 UTC; kyle
+Packaged: 2025-09-11 17:29:48 UTC; kyle
 Author: Kyle Grealis [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-9223-8854>),
   Nick Triplett [ctb],
   Gabriel Odom [ctb] (ORCID: <https://orcid.org/0000-0003-1341-4555>)
 Repository: CRAN
-Date/Publication: 2025-06-02 22:00:02 UTC
+Date/Publication: 2025-09-11 17:40:02 UTC
