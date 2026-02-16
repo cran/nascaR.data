@@ -1,12 +1,14 @@
 # nascaR.data <a href="https://www.kylegrealis.com/nascaR.data/"><img src="man/figures/logo.svg" align="right" height="139" alt="nascaR.data website" /></a>
 
 
+<!-- badges: start -->
 [![R-CMD-check](https://github.com/kyleGrealis/nascaR.data/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kyleGrealis/nascaR.data/actions/workflows/R-CMD-check.yaml)
-[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-[![CRAN status](https://www.r-pkg.org/badges/version/nascaR.data)](https://CRAN.R-project.org/package=nascaR.data)
-[![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/nascaR.data)](https://cran.r-project.org/package=nascaR.data)
 [![NASCAR Data Update](https://github.com/kyleGrealis/nascaR.data/actions/workflows/weekly-nascar-update.yml/badge.svg)](https://github.com/kyleGrealis/nascaR.data/actions/workflows/weekly-nascar-update.yml)
-
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![CRAN status](https://www.r-pkg.org/badges/version/nascaR.data)](https://CRAN.R-project.org/package=nascaR.data)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/nascaR.data)](https://cran.r-project.org/package=nascaR.data)
+<!-- badges: end -->
 
 ----
 
@@ -41,7 +43,7 @@ nxs <- load_series("nxs")
 truck <- load_series("truck")
 ```
 
-Data is cached locally after the first download for instant access. Use `refresh = TRUE` to force a fresh download, or `clear_cache()` to wipe the cache.
+Data is cached in memory for the current R session. Each new session downloads fresh data automatically. Use `refresh = TRUE` to force a re-download within a session.
 
 Data is updated automatically every Monday during the racing season (February through November).
 
@@ -146,7 +148,7 @@ This package provides rich historical data for:
 | Function | Description |
 |----------|-------------|
 | `load_series()` | Load race data from cloud storage (with caching) |
-| `clear_cache()` | Clear cached data from memory and disk |
+| `clear_cache()` | Clear in-memory cached data |
 | `get_driver_info()` | Obtain race, season, or career performance results |
 | `get_team_info()` | Team-specific race, season, or career results (i.e., Petty Enterprises) |
 | `get_manufacturer_info()` | Ford, Chevy, Toyota, Dodge, even Studebaker |

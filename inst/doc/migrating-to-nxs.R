@@ -25,14 +25,10 @@ knitr::opts_chunk$set(
 # get_driver_info("bell", series = "nxs")
 
 ## ----eval = FALSE-------------------------------------------------------------
-# # View cache location
-# tools::R_user_dir("nascaR.data", which = "cache")
-
-## ----eval = FALSE-------------------------------------------------------------
-# # Force fresh download
+# # Force fresh download within a session
 # cup <- load_series("cup", refresh = TRUE)
 # 
-# # Clear all cached data (memory + disk)
+# # Reset the in-memory cache
 # clear_cache()
 
 ## ----eval = FALSE-------------------------------------------------------------

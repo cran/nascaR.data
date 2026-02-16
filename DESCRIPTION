@@ -1,6 +1,6 @@
 Package: nascaR.data
 Title: NASCAR Race Data
-Version: 3.0.0
+Version: 3.0.1
 Authors@R: 
     c(
         person(
@@ -44,11 +44,11 @@ VignetteBuilder: knitr
 URL: https://www.kylegrealis.com/nascaR.data/
 BugReports: https://github.com/kyleGrealis/nascaR.data/issues
 NeedsCompilation: no
-Packaged: 2026-02-14 00:10:18 UTC; kyle
+Packaged: 2026-02-16 13:43:36 UTC; kyle
 Author: Kyle Grealis [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-9223-8854>),
   Nick Triplett [ctb],
   Gabriel Odom [ctb] (ORCID: <https://orcid.org/0000-0003-1341-4555>)
 Maintainer: Kyle Grealis <kylegrealis@proton.me>
 Repository: CRAN
-Date/Publication: 2026-02-14 14:40:22 UTC
+Date/Publication: 2026-02-16 14:30:13 UTC
